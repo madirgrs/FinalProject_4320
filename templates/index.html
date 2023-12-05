@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>HomePage</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{ url_for('static', filename='basic.css') }}">
+    </head>
+    <body>
+        <header>
+        <nav class="header1">
+            <u><a href="{{url_for('index')}}">Home</a></u>
+           <u><a href="{{(url_for('admin_login'))}}">Admin</a></u>
+           <u><a href="{{(url_for('reserve_a_seat'))}}">Reservation</a></u>
+            
+        </nav>
+    </header>
+    <div>
+        <main>
+            <p class="header2"><u>Welcome to IT 4320 Trip Reservation System</u></p>
+            <p>Welcome to IT 4320 reservation system. Use the select box to chooose whethere to make a reservation or log in as admin</p>
+
+            <form action="/submit" method="POST">
+                <label for="dropdownMenu">Choose an option:</label>
+                <select id="dropdownMenu" name="dropdownMenu">
+                    <option value="option1">Choose an Option</option>
+                    <option value="option2">Admin Login</option>
+                    <option value="option3">Reserve a Seat</option>
+                </select>
+                <input type="submit" value="Submit">
+            </form>
+            
+        </main>
+    </div>
+
+
+
+        
+        <script src="" async defer></script>
+    </body>
+</html>

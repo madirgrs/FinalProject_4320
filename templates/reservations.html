@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Bus Seat Reservation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{ url_for('static', filename='basic.css') }}">
+        <style>
+            .content {
+                display: flex;
+                justify-content: start;
+                align-items: flex-start;
+            }
+            .seating-chart {
+                background-color: rgba(44, 88, 84, 0.377);
+                padding: 10px;
+                margin-left: 20px; /* Space between form and chart */
+                font-family: monospace;
+                white-space: pre;
+                display: inline-block;
+            }
+            .solid-line {
+                border-bottom: 2px solid #1d1e2c;
+                margin-top: 10px;
+            }
+            .form-section {
+                margin-top: 20px;
+                margin-right: 20px; /* Space between form and chart */
+            }
+            .form-section input[type="text"], .form-section select {
+                width: 200px;
+                margin-right: 10px;
+                margin-bottom: 10px; /* Spacing between form elements */
+            }
+            .form-section input[type="submit"] {
+                margin-top: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="header1">
+            <u><a href="{{url_for('index')}}">Home</a></u>
+            <u><a href="{{url_for('admin_login')}}">Admin</a></u>
+            <u><a href="{{url_for('reserve_a_seat')}}">Reservation</a></u>
+        </nav>
+        
+        <h1 class="header3">Reserve Your Seat</h1>
+        <div class="solid-line"></div>
+        
+        <div class="content">
+            <div class="form-section">
+                <form id="reservationForm">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" id="firstName" name="firstName">
+                    <br>
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" id="lastName" name="lastName">
+                    <br>
+                    <label for="row">Choose a Row:</label>
+                    <select id="row" name="row">
+                        <option value="">--Select Row--</option>
+                        {% for i in range(1, 13) %}
+                            <option value="{{ i }}">{{ i }}</option>
+                        {% endfor %}
+                    </select>
+                    <br>
+                    <label for="seat">Choose a Seat:</label>
+                    <select id="seat" name="seat">
+                        <option value="">--Select Seat--</option>
+                        {% for i in range(1, 5) %}
+                            <option value="{{ i }}">{{ i }}</option>
+                        {% endfor %}
+                    </select>
+                    <br>
+                    <input type="submit" value="Reserve">
+                </form>
+            </div>
+            <div>
+                <h2>Seating Chart</h2>
+                <p>X = Reserved Seat</p>
+                <p>O = Available Seat</p>
+                <pre class="seating-chart">
+["0", "0", "0", "0",]
+["0", "0", "0", "0",]
+["0", "0", "0", "0",]
+["0", "0", "0", "0",]
+["0", "0", "0", "0",]
+["0", "0", "0", "0",]
+["0", "0", "0", "0",]
+["0", "0", "0", "0",]
+["0", "0", "0", "0",]
+["0", "0", "0", "0",]
+["0", "0", "0", "0",]
+["0", "0", "0", "0",]
+                </pre>
+            </div>
+        </div>
+
+        <script src="{{ url_for('static', filename='reservations.js') }}" defer></script>
+    </body>
+</html>
+
+

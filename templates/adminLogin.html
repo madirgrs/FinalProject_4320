@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Admin Login</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='basic.css') }}">
+    <style>
+        .content {
+            display: flex;
+            justify-content: start;
+            align-items: flex-start;
+        }
+        .seating-chart {
+            background-color: rgba(44, 88, 84, 0.377);
+            padding: 10px;
+            margin-left: 20px;
+            font-family: monospace;
+            white-space: pre;
+            display: inline-block;
+        }
+        .solid-line {
+            border-bottom: 2px solid #1d1e2c;
+            margin-top: 10px;
+        }
+        .form-section {
+            margin-top: 20px;
+            margin-right: 20px;
+        }
+        .form-section input[type="text"], .form-section select {
+            width: 200px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        .form-section input[type="submit"] {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="header1">
+        <u><a href="{{url_for('index')}}">Home</a></u>
+        <u><a href="{{(url_for('admin_login'))}}">Admin</a></u>
+        <u><a href="{{(url_for('reserve_a_seat'))}}">Reservation</a></u>
+    </nav>
+    
+    <h1 class="header3">Administrator Login</h1>
+    <form id="loginform">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username">
+        <br>
+        <label for="password">Password:</label>
+        <input type="text" id="password" name="password">
+        <br>
+        <input type="button" value="login" onclick="validateLogin()">
+
+        <h2 id="seatingChartHeading" style="display: none;">Seating Chart</h2>
+        <pre class="seating-chart" id="seatingChart" style="display: none;">
+            <p>X = Reserved Seat</p>
+                <p>O = Available Seat</p>
+                <pre class="seating-chart">
+["0", "0", "0", "0",]
+["0", "0", "0", "0",]
+["0", "0", "0", "0",]
+["0", "0", "0", "0",]
+["0", "0", "0", "0",]
+["0", "0", "0", "0",]
+["0", "0", "0", "0",]
+["0", "0", "0", "0",]
+["0", "0", "0", "0",]
+["0", "0", "0", "0",]
+["0", "0", "0", "0",]
+["0", "0", "0", "0",]
+                </pre>
+        </pre>
+
+        <pre class="seating-chart" id="seatingChart" style="display: none;">Seating chart data will appear here.</pre>
+
+        <p id="totalSalesHeading" style="display: none;">Total Sales: <span id="totalSales">$0</span></p>
+
+    </form>
+
+    <script src="{{ url_for('static', filename='login.js') }}" defer></script>
+</body>
+</html>
+
